@@ -10,20 +10,22 @@
 [Task]
 Once you run the project, simultaneously swagger documentation will be run. You can find api documentation here (https://localhost:3000/api).
 
-
 ## Installation
 
 1. Install dependencies
+
 ```bash
 $ npm install
 ```
 
 2. run docker
+
 ```bash
 $ docker-compose up
 ```
 
-3. copy .env.dist 
+3. copy .env.dist
+
 ```bash
 $ copy .env.dist .env
 ```

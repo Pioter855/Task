@@ -10,6 +10,7 @@ import {
 import { Product } from 'src/product/product.entity';
 import { ProductDto } from './dto/product.dto';
 import { ProductService } from './product.service';
+import*as Joi from 'joi'
 
 @Controller('products')
 export class ProductController {
@@ -34,7 +35,14 @@ export class ProductController {
   }
 
   @Post()
-  createProduct(@Body() productDto: ProductDto): Promise<Product> {
+  async createProduct(@Body() productDto: ProductDto): Promise<Product> {
+    const schema = Joi.object({
+      Name: Joi.string().min(3).max(100),
+      Price: Joi.number()
+    })
+    schema.validateAsync({Body})
+    const validationResult = await schema.validateAsync
+    console.log(validationResult)
     return this.productService.create(productDto);
   }
 
